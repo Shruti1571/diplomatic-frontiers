@@ -42,13 +42,52 @@ const Particle = ({ delay }: { delay: number }) => (
   />
 );
 
+// Star twinkle effect
+const Star = ({ delay, size, x, y }: { delay: number; size: number; x: string; y: string }) => (
+  <motion.div
+    className="absolute rounded-full bg-primary/60"
+    style={{ width: size, height: size, left: x, top: y }}
+    animate={{ opacity: [0.2, 1, 0.2], scale: [0.8, 1.2, 0.8] }}
+    transition={{ duration: 2 + Math.random() * 3, delay, repeat: Infinity, ease: "easeInOut" }}
+  />
+);
+
 const HeroSection = ({ onJoinClick }: { onJoinClick: () => void }) => {
+  const stars = useRef(
+    Array.from({ length: 40 }).map(() => ({
+      x: Math.random() * 100 + "%",
+      y: Math.random() * 100 + "%",
+      size: Math.random() * 3 + 1,
+      delay: Math.random() * 5,
+    }))
+  ).current;
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background */}
+      {/* Galaxy Background - slow drifting & rotating */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover" />
+        <motion.div
+          className="absolute inset-[-40%] w-[180%] h-[180%]"
+          animate={{
+            scale: [1, 1.08, 1.03, 1.06, 1],
+            x: ["0%", "3%", "-2%", "1%", "0%"],
+            y: ["0%", "-2%", "2%", "-1%", "0%"],
+            rotate: [0, 2, -1, 1.5, 0],
+          }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <img src={heroBg} alt="" className="w-full h-full object-cover" />
+        </motion.div>
         <div className="absolute inset-0 bg-background/60" />
+        {/* Radial vignette for galaxy depth */}
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 30%, hsl(220 20% 4% / 0.7) 100%)" }} />
+      </div>
+
+      {/* Twinkling stars */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {stars.map((s, i) => (
+          <Star key={`star-${i}`} delay={s.delay} size={s.size} x={s.x} y={s.y} />
+        ))}
       </div>
 
       {/* Particles */}
