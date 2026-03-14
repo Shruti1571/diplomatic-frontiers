@@ -12,7 +12,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Playfair Display"', 'serif'],
+        display: ['"Cinzel"', 'serif'],
+        serif: ['"Cormorant Garamond"', 'serif'],
         body: ['"Raleway"', 'sans-serif'],
       },
       colors: {
@@ -28,8 +29,24 @@ export default {
         accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
         popover: { DEFAULT: "hsl(var(--popover))", foreground: "hsl(var(--popover-foreground))" },
         card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
-        gold: { DEFAULT: "hsl(var(--primary))", glow: "hsl(var(--gold-glow))" },
-        velvet: { DEFAULT: "hsl(var(--velvet))", foreground: "hsl(var(--velvet-foreground))" },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+          pale: "hsl(var(--gold-pale))",
+        },
+        crimson: {
+          DEFAULT: "hsl(var(--crimson))",
+          deep: "hsl(var(--crimson-deep))",
+        },
+        cream: {
+          DEFAULT: "hsl(var(--cream))",
+          soft: "hsl(var(--cream-soft))",
+        },
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          "2": "hsl(var(--navy2))",
+          light: "hsl(var(--navy-light))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
