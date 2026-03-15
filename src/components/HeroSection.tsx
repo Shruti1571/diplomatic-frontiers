@@ -1,25 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
-interface Star {
-  x: number;
-  y: number;
-  size: number;
-  opacity: number;
-  speed: number;
-  twinkleSpeed: number;
-  twinklePhase: number;
-}
-
-interface ShootingStar {
-  x: number;
-  y: number;
-  len: number;
-  speed: number;
-  angle: number;
-  opacity: number;
-  life: number;
-  maxLife: number;
-}
+import GalaxyBackground from "./GalaxyBackground";
 
 const CounterCard = ({ target, label }: { target: number; label: string }) => {
   const [count, setCount] = useState(0);
@@ -69,147 +49,17 @@ const CounterCard = ({ target, label }: { target: number; label: string }) => {
 };
 
 const HeroSection = ({ onJoinClick }: { onJoinClick: () => void }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d")!;
-    let animId: number;
-    let W: number, H: number;
-
-    const stars: Star[] = [];
-    const shootingStars: ShootingStar[] = [];
-
-    const resize = () => {
-      W = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      H = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      initStars();
-    };
-
-    const initStars = () => {
-      stars.length = 0;
-      const cW = canvas.offsetWidth;
-      const cH = canvas.offsetHeight;
-      for (let i = 0; i < 350; i++) {
-        stars.push({
-          x: Math.random() * cW,
-          y: Math.random() * cH,
-          size: Math.random() * 1.8 + 0.3,
-          opacity: Math.random() * 0.7 + 0.3,
-          speed: Math.random() * 0.02 + 0.005,
-          twinkleSpeed: Math.random() * 0.03 + 0.01,
-          twinklePhase: Math.random() * Math.PI * 2,
-        });
-      }
-    };
-
-    const spawnShootingStar = () => {
-      const cW = canvas.offsetWidth;
-      const cH = canvas.offsetHeight;
-      shootingStars.push({
-        x: Math.random() * cW,
-        y: Math.random() * cH * 0.4,
-        len: Math.random() * 80 + 40,
-        speed: Math.random() * 4 + 3,
-        angle: Math.PI / 4 + (Math.random() - 0.5) * 0.3,
-        opacity: 1,
-        life: 0,
-        maxLife: Math.random() * 40 + 30,
-      });
-    };
-
-    let frame = 0;
-    const animate = () => {
-      frame++;
-      const cW = canvas.offsetWidth;
-      const cH = canvas.offsetHeight;
-      ctx.clearRect(0, 0, cW, cH);
-
-      // Nebula glow
-      const g1 = ctx.createRadialGradient(cW * 0.3, cH * 0.4, 0, cW * 0.3, cH * 0.4, cW * 0.5);
-      g1.addColorStop(0, "rgba(90, 50, 140, 0.08)");
-      g1.addColorStop(1, "transparent");
-      ctx.fillStyle = g1;
-      ctx.fillRect(0, 0, cW, cH);
-
-      const g2 = ctx.createRadialGradient(cW * 0.7, cH * 0.6, 0, cW * 0.7, cH * 0.6, cW * 0.4);
-      g2.addColorStop(0, "rgba(30, 60, 120, 0.06)");
-      g2.addColorStop(1, "transparent");
-      ctx.fillStyle = g2;
-      ctx.fillRect(0, 0, cW, cH);
-
-      // Stars
-      for (const s of stars) {
-        s.twinklePhase += s.twinkleSpeed;
-        const flicker = 0.5 + 0.5 * Math.sin(s.twinklePhase);
-        const alpha = s.opacity * flicker;
-
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-        ctx.fill();
-
-        // Glow for larger stars
-        if (s.size > 1.2) {
-          ctx.beginPath();
-          ctx.arc(s.x, s.y, s.size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(200, 180, 255, ${alpha * 0.1})`;
-          ctx.fill();
-        }
-      }
-
-      // Shooting stars
-      if (frame % 120 === 0 && Math.random() > 0.4) spawnShootingStar();
-
-      for (let i = shootingStars.length - 1; i >= 0; i--) {
-        const ss = shootingStars[i];
-        ss.life++;
-        ss.x += Math.cos(ss.angle) * ss.speed;
-        ss.y += Math.sin(ss.angle) * ss.speed;
-        ss.opacity = 1 - ss.life / ss.maxLife;
-
-        const tailX = ss.x - Math.cos(ss.angle) * ss.len;
-        const tailY = ss.y - Math.sin(ss.angle) * ss.len;
-
-        const grad = ctx.createLinearGradient(tailX, tailY, ss.x, ss.y);
-        grad.addColorStop(0, `rgba(255, 255, 255, 0)`);
-        grad.addColorStop(1, `rgba(255, 255, 255, ${ss.opacity})`);
-
-        ctx.beginPath();
-        ctx.moveTo(tailX, tailY);
-        ctx.lineTo(ss.x, ss.y);
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-
-        if (ss.life >= ss.maxLife) shootingStars.splice(i, 1);
-      }
-
-      animId = requestAnimationFrame(animate);
-    };
-
-    resize();
-    animate();
-    window.addEventListener("resize", resize);
-    return () => {
-      window.removeEventListener("resize", resize);
-      cancelAnimationFrame(animId);
-    };
-  }, []);
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-28">
-      {/* Globe canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-0" />
+      <GalaxyBackground />
 
       {/* Overlay */}
       <div className="absolute inset-0 z-[1]"
-        style={{ background: "radial-gradient(ellipse at center, rgba(10,14,26,0.3) 0%, rgba(10,14,26,0.75) 60%, rgba(10,14,26,0.97) 100%)" }}
+        style={{ background: "radial-gradient(ellipse at center, rgba(10,14,26,0.2) 0%, rgba(10,14,26,0.6) 60%, rgba(10,14,26,0.95) 100%)" }}
       />
 
       {/* Content */}
