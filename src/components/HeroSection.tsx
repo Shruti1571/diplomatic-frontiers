@@ -57,9 +57,9 @@ const HeroSection = ({ onJoinClick }: { onJoinClick: () => void }) => {
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-28">
       <GalaxyBackground />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 z-[1]"
-        style={{ background: "radial-gradient(ellipse at center, rgba(10,14,26,0.2) 0%, rgba(10,14,26,0.6) 60%, rgba(10,14,26,0.95) 100%)" }}
+      {/* Subtle edge fade */}
+      <div className="absolute inset-0 z-[1] pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at center, transparent 0%, transparent 50%, hsl(222, 40%, 5%) 100%)" }}
       />
 
       {/* Content */}

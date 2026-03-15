@@ -170,12 +170,12 @@ function NebulaClouds() {
 
 const GalaxyBackground = () => {
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 z-0 bg-background">
       <Canvas
         camera={{ position: [0, 3, 8], fov: 60 }}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ antialias: true, alpha: false }}
         dpr={[1, 2]}
-        style={{ background: "transparent" }}
+        style={{ background: "hsl(222, 40%, 5%)" }}
       >
         <GalaxyParticles />
         <BackgroundStars />
