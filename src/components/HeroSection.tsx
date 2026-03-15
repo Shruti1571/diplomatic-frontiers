@@ -1,13 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 
-const FLAG_COLORS = [
-  '#FF9933', '#138808', '#000080', '#FFFFFF',
-  '#FF0000', '#FFFFFF', '#0000FF',
-  '#FF0000', '#000000', '#FFCC00',
-  '#FF0000', '#FFFFFF',
-  '#003893', '#FF0000', '#FFFFFF',
-  '#007A3D', '#FFFFFF', '#EF3340',
-];
+interface Star {
+  x: number;
+  y: number;
+  size: number;
+  opacity: number;
+  speed: number;
+  twinkleSpeed: number;
+  twinklePhase: number;
+}
+
+interface ShootingStar {
+  x: number;
+  y: number;
+  len: number;
+  speed: number;
+  angle: number;
+  opacity: number;
+  life: number;
+  maxLife: number;
+}
 
 const CounterCard = ({ target, label }: { target: number; label: string }) => {
   const [count, setCount] = useState(0);
@@ -43,7 +55,6 @@ const CounterCard = ({ target, label }: { target: number; label: string }) => {
         backdropFilter: "blur(10px)",
       }}
     >
-      {/* Top gold line */}
       <div className="absolute top-0 left-0 right-0 h-[2px]"
         style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold)), transparent)" }}
       />
@@ -67,71 +78,114 @@ const HeroSection = ({ onJoinClick }: { onJoinClick: () => void }) => {
     let animId: number;
     let W: number, H: number;
 
-    const particles: { phi: number; theta: number; r: number; speed: number; size: number; color: string; opacity: number }[] = [];
+    const stars: Star[] = [];
+    const shootingStars: ShootingStar[] = [];
 
     const resize = () => {
-      W = canvas.width = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
-      initParticles();
+      W = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      H = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      initStars();
     };
 
-    const initParticles = () => {
-      particles.length = 0;
-      const r = Math.min(W, H) * 0.28;
-      for (let i = 0; i < 220; i++) {
-        particles.push({
-          phi: Math.random() * Math.PI * 2,
-          theta: Math.random() * Math.PI,
-          r,
-          speed: (Math.random() * 0.002 + 0.0005) * (Math.random() > 0.5 ? 1 : -1),
-          size: Math.random() * 2 + 0.5,
-          color: FLAG_COLORS[Math.floor(Math.random() * FLAG_COLORS.length)],
-          opacity: Math.random() * 0.5 + 0.1,
+    const initStars = () => {
+      stars.length = 0;
+      const cW = canvas.offsetWidth;
+      const cH = canvas.offsetHeight;
+      for (let i = 0; i < 350; i++) {
+        stars.push({
+          x: Math.random() * cW,
+          y: Math.random() * cH,
+          size: Math.random() * 1.8 + 0.3,
+          opacity: Math.random() * 0.7 + 0.3,
+          speed: Math.random() * 0.02 + 0.005,
+          twinkleSpeed: Math.random() * 0.03 + 0.01,
+          twinklePhase: Math.random() * Math.PI * 2,
         });
       }
     };
 
-    const drawGlobe = () => {
-      const cx = W / 2, cy = H / 2;
-      const r = Math.min(W, H) * 0.28;
-      ctx.strokeStyle = "rgba(201,168,76,0.06)";
-      ctx.lineWidth = 0.5;
-
-      for (let lat = -80; lat <= 80; lat += 20) {
-        const yr = r * Math.sin((lat * Math.PI) / 180);
-        const xr = r * Math.cos((lat * Math.PI) / 180);
-        ctx.beginPath();
-        ctx.ellipse(cx, cy + yr * 0.5, xr, xr * 0.3, 0, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-
-      for (let i = 0; i < 12; i++) {
-        const angle = (i / 12) * Math.PI;
-        ctx.beginPath();
-        ctx.ellipse(cx, cy, r * Math.abs(Math.cos(angle)), r * 0.5, angle, 0, Math.PI * 2);
-        ctx.stroke();
-      }
+    const spawnShootingStar = () => {
+      const cW = canvas.offsetWidth;
+      const cH = canvas.offsetHeight;
+      shootingStars.push({
+        x: Math.random() * cW,
+        y: Math.random() * cH * 0.4,
+        len: Math.random() * 80 + 40,
+        speed: Math.random() * 4 + 3,
+        angle: Math.PI / 4 + (Math.random() - 0.5) * 0.3,
+        opacity: 1,
+        life: 0,
+        maxLife: Math.random() * 40 + 30,
+      });
     };
 
+    let frame = 0;
     const animate = () => {
-      ctx.clearRect(0, 0, W, H);
-      drawGlobe();
+      frame++;
+      const cW = canvas.offsetWidth;
+      const cH = canvas.offsetHeight;
+      ctx.clearRect(0, 0, cW, cH);
 
-      const cx = W / 2, cy = H / 2;
-      for (const p of particles) {
-        p.phi += 0.003;
-        const x = cx + p.r * Math.sin(p.theta) * Math.cos(p.phi);
-        const y = cy + p.r * Math.sin(p.theta) * Math.sin(p.phi) * 0.5;
-        const z = p.r * Math.cos(p.theta);
-        const scale = (z + p.r) / (2 * p.r);
+      // Nebula glow
+      const g1 = ctx.createRadialGradient(cW * 0.3, cH * 0.4, 0, cW * 0.3, cH * 0.4, cW * 0.5);
+      g1.addColorStop(0, "rgba(90, 50, 140, 0.08)");
+      g1.addColorStop(1, "transparent");
+      ctx.fillStyle = g1;
+      ctx.fillRect(0, 0, cW, cH);
+
+      const g2 = ctx.createRadialGradient(cW * 0.7, cH * 0.6, 0, cW * 0.7, cH * 0.6, cW * 0.4);
+      g2.addColorStop(0, "rgba(30, 60, 120, 0.06)");
+      g2.addColorStop(1, "transparent");
+      ctx.fillStyle = g2;
+      ctx.fillRect(0, 0, cW, cH);
+
+      // Stars
+      for (const s of stars) {
+        s.twinklePhase += s.twinkleSpeed;
+        const flicker = 0.5 + 0.5 * Math.sin(s.twinklePhase);
+        const alpha = s.opacity * flicker;
 
         ctx.beginPath();
-        ctx.arc(x, y, p.size * scale, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.opacity * scale;
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
         ctx.fill();
+
+        // Glow for larger stars
+        if (s.size > 1.2) {
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.size * 3, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(200, 180, 255, ${alpha * 0.1})`;
+          ctx.fill();
+        }
       }
-      ctx.globalAlpha = 1;
+
+      // Shooting stars
+      if (frame % 120 === 0 && Math.random() > 0.4) spawnShootingStar();
+
+      for (let i = shootingStars.length - 1; i >= 0; i--) {
+        const ss = shootingStars[i];
+        ss.life++;
+        ss.x += Math.cos(ss.angle) * ss.speed;
+        ss.y += Math.sin(ss.angle) * ss.speed;
+        ss.opacity = 1 - ss.life / ss.maxLife;
+
+        const tailX = ss.x - Math.cos(ss.angle) * ss.len;
+        const tailY = ss.y - Math.sin(ss.angle) * ss.len;
+
+        const grad = ctx.createLinearGradient(tailX, tailY, ss.x, ss.y);
+        grad.addColorStop(0, `rgba(255, 255, 255, 0)`);
+        grad.addColorStop(1, `rgba(255, 255, 255, ${ss.opacity})`);
+
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(ss.x, ss.y);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        if (ss.life >= ss.maxLife) shootingStars.splice(i, 1);
+      }
 
       animId = requestAnimationFrame(animate);
     };
@@ -144,7 +198,6 @@ const HeroSection = ({ onJoinClick }: { onJoinClick: () => void }) => {
       cancelAnimationFrame(animId);
     };
   }, []);
-
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
