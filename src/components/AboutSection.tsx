@@ -15,13 +15,12 @@ const AboutSection = () => (
         <div
           className="relative w-[280px] h-[280px] md:w-[340px] md:h-[340px] rounded-full flex items-center justify-center overflow-hidden"
           style={{
-            background: "radial-gradient(circle at 40% 40%, #1a1200, hsl(var(--navy)))",
+            background: "transparent",
             border: "1px solid hsl(var(--gold) / 0.3)",
-            boxShadow: "0 0 60px hsl(var(--gold) / 0.1), inset 0 0 60px rgba(0,0,0,0.5)",
+            boxShadow: "0 0 60px hsl(var(--gold) / 0.1)",
           }}
         >
-          {/* Logo image - fills entire circle */}
-          <img src={yanfLogo} alt="YANF Logo" className="absolute inset-0 w-full h-full rounded-full object-cover object-center" />
+          <img src={yanfLogo} alt="YANF Logo" className="w-[85%] h-[85%] object-contain" />
         </div>
       </motion.div>
 

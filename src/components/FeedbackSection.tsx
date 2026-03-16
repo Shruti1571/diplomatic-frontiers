@@ -1,20 +1,43 @@
 import { motion } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 const testimonials = [
   { initial: "A", name: "Ambassador Rajiv Nair", role: "Former Diplomat, Ministry of External Affairs", quote: "YANF represents exactly the kind of youth initiative India needs. Their MUN conferences produced some of the most articulate young delegates I have ever had the privilege of witnessing." },
   { initial: "P", name: "Prof. Meera Chandrashekhar", role: "Dean of Political Science, Delhi University", quote: "The depth of preparation and intellectual rigour that YANF brings to their debates is remarkable. These students demonstrate a level of geopolitical awareness that rivals university graduates." },
   { initial: "S", name: "Siddharth Agarwal", role: "CEO, StartupIndia Foundation", quote: "We partnered with YANF for the Innovation Assembly and were astounded by the quality of solutions presented. This organisation is building India's future problem-solvers." },
   { initial: "N", name: "Nandita Rao", role: "Principal, Springfields International School", quote: "YANF's Youth Parliament gave our students an experience no classroom could replicate. The confidence and clarity they developed in just one event was transformational." },
+  { initial: "R", name: "Dr. Rohan Kapoor", role: "Director, Centre for Strategic Studies", quote: "The calibre of research and argumentation at YANF events is exceptional. These young minds are already contributing meaningfully to policy discourse in India." },
+  { initial: "D", name: "Deepika Sharma", role: "Education Advisor, NITI Aayog", quote: "YANF bridges the gap between textbook knowledge and real-world diplomacy. Their model parliament sessions are among the best-structured youth programmes I've seen." },
+  { initial: "V", name: "Vikram Malhotra", role: "Head of CSR, Tata Trusts", quote: "Investing in YANF was one of our best decisions. The organisation has a remarkable ability to identify and nurture leadership potential in young Indians from diverse backgrounds." },
+  { initial: "K", name: "Dr. Kavita Menon", role: "Professor of International Relations, JNU", quote: "I was invited as a jury member and was thoroughly impressed. The students' understanding of multilateral diplomacy and conflict resolution was far beyond their years." },
 ];
 
 const FeedbackSection = () => {
   const [idx, setIdx] = useState(0);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const maxIdx = Math.max(0, testimonials.length - 3);
+
+  const startAutoSlide = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setIdx((prev) => (prev >= maxIdx ? 0 : prev + 1));
+    }, 3500);
+  }, [maxIdx]);
+
+  useEffect(() => {
+    if (!isPaused) startAutoSlide();
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [isPaused, startAutoSlide]);
 
   const slide = (dir: number) => {
-    const max = Math.max(0, testimonials.length - 3);
-    setIdx((prev) => Math.max(0, Math.min(prev + dir, max)));
+    setIdx((prev) => {
+      const next = prev + dir;
+      return next < 0 ? maxIdx : next > maxIdx ? 0 : next;
+    });
+    // Reset auto-slide timer on manual interaction
+    startAutoSlide();
   };
 
   return (
@@ -37,13 +60,13 @@ const FeedbackSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className="max-w-[1200px] mx-auto relative overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
         <div
-          ref={trackRef}
-          className="flex transition-transform duration-500"
+          className="flex transition-transform duration-700 ease-in-out"
           style={{
             transform: `translateX(-${idx * (100 / 3 + 1.5)}%)`,
-            transitionTimingFunction: "cubic-bezier(0.25,0.46,0.45,0.94)",
           }}
         >
           {testimonials.map((t) => (
@@ -56,11 +79,9 @@ const FeedbackSection = () => {
                 border: "1px solid hsl(var(--border))",
               }}
             >
-              {/* Quote mark */}
               <div className="absolute top-4 right-6 font-serif text-[5rem] leading-none pointer-events-none" style={{ color: "hsl(var(--gold) / 0.12)" }}>
                 &ldquo;
               </div>
-              {/* Avatar */}
               <div
                 className="w-[52px] h-[52px] rounded-full flex items-center justify-center font-display text-lg font-bold mb-5"
                 style={{
@@ -80,14 +101,27 @@ const FeedbackSection = () => {
           ))}
         </div>
 
-        {/* Slider controls */}
-        <div className="flex gap-3 mt-8 justify-center">
+        {/* Dot indicators + controls */}
+        <div className="flex gap-3 mt-8 justify-center items-center">
           <button
             onClick={() => slide(-1)}
             className="w-[42px] h-[42px] flex items-center justify-center border border-primary text-primary hover:bg-primary hover:text-background transition-all cursor-pointer text-base"
           >
             ←
           </button>
+          <div className="flex gap-1.5 mx-2">
+            {Array.from({ length: maxIdx + 1 }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { setIdx(i); startAutoSlide(); }}
+                className="w-2 h-2 rounded-full transition-all duration-300"
+                style={{
+                  background: i === idx ? "hsl(var(--gold))" : "hsl(var(--gold) / 0.2)",
+                  transform: i === idx ? "scale(1.3)" : "scale(1)",
+                }}
+              />
+            ))}
+          </div>
           <button
             onClick={() => slide(1)}
             className="w-[42px] h-[42px] flex items-center justify-center border border-primary text-primary hover:bg-primary hover:text-background transition-all cursor-pointer text-base"

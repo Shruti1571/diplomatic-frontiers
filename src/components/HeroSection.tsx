@@ -68,10 +68,10 @@ const HeroSection = ({ onJoinClick }: { onJoinClick: () => void }) => {
           Est. 2026 &nbsp;·&nbsp; Empowering India's Youth
         </div>
         <h1 className="font-display font-black leading-[0.95] text-white mb-2"
-          style={{ fontSize: "clamp(3rem, 8vw, 7rem)", letterSpacing: "-0.01em" }}
+          style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)", letterSpacing: "-0.01em" }}
         >
-          <span className="text-primary">Y</span>OUTH <span className="text-primary">A</span>S<br />
-          <span className="text-primary">N</span>ATION'S <span className="text-primary">F</span>RONT
+          <span className="text-primary">The</span> Architecture<br />
+          of <span className="text-primary">Influence</span>
         </h1>
         <p className="font-serif italic text-cream-soft tracking-[0.05em] mb-10 opacity-85"
           style={{ fontSize: "clamp(1rem, 2.5vw, 1.5rem)", fontWeight: 300 }}
