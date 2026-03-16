@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import yanfLogo from "@/assets/yanf-logo.jpeg";
+import yanfLogo from "@/assets/yanf-logo.png";
 
 const eventItems = [
   { label: "MUNs", path: "/events/muns" },

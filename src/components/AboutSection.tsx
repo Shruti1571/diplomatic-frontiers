@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import yanfLogo from "@/assets/yanf-logo.jpeg";
+import yanfLogo from "@/assets/yanf-logo.png";
 
 const AboutSection = () => (
   <section id="about" className="section-padding" style={{ background: "hsl(var(--navy2))", borderTop: "1px solid hsl(var(--border))", borderBottom: "1px solid hsl(var(--border))" }}>
