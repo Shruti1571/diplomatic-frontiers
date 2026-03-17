@@ -12,15 +12,8 @@ const AboutSection = () => (
         transition={{ duration: 0.7 }}
         className="flex items-center justify-center"
       >
-        <div
-          className="relative w-[280px] h-[280px] md:w-[340px] md:h-[340px] rounded-full flex items-center justify-center overflow-hidden"
-          style={{
-            background: "transparent",
-            border: "1px solid hsl(var(--gold) / 0.3)",
-            boxShadow: "0 0 60px hsl(var(--gold) / 0.1)",
-          }}
-        >
-          <img src={yanfLogo} alt="YANF Logo" className="w-[85%] h-[85%] object-contain" />
+        <div className="relative w-[280px] h-[280px] md:w-[380px] md:h-[380px] flex items-center justify-center">
+          <img src={yanfLogo} alt="YANF Logo" className="w-full h-full object-contain" />
         </div>
       </motion.div>
 
