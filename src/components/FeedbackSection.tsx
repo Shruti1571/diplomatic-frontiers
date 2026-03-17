@@ -63,7 +63,7 @@ const FeedbackSection = () => {
           <span className="text-foreground">Voices of </span>
           <span className="text-gold">Authority</span>
         </h2>
-        <div className="w-16 h-[3px] bg-gold mt-5"></div>
+        <div className="gold-line mt-5" />
       </motion.div>
 
       <motion.div
