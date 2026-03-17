@@ -56,12 +56,14 @@ const FeedbackSection = () => {
         viewport={{ once: true }}
         className="max-w-[1200px] mx-auto mb-4"
       >
-        <h2 className="font-display text-[2.8rem] md:text-[3.5rem] font-bold leading-[1.1] tracking-[-0.02em] text-foreground italic font-serif">
-          Voices of Authority
-        </h2>
-        <p className="text-muted-foreground text-base mt-3 font-body">
-          What leaders and institutions say about us.
+        <p className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-3">
+          What Leaders Say
         </p>
+        <h2 className="font-display text-[2.8rem] md:text-[3.5rem] font-bold leading-[1.1] tracking-[-0.02em] uppercase">
+          <span className="text-foreground">Voices of </span>
+          <span className="text-gold">Authority</span>
+        </h2>
+        <div className="w-16 h-[3px] bg-gold mt-5"></div>
       </motion.div>
 
       <motion.div
