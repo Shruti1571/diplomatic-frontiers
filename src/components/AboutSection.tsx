@@ -28,24 +28,23 @@ const AboutSection = () => (
         <h2 className="section-title">About <span>YANF</span></h2>
         <div className="gold-line mb-8" />
         <p className="font-serif text-lg text-cream-soft leading-[1.85] opacity-90 mb-6">
-          YANF — Youth As Nation's Front — is a premier educational platform dedicated to cultivating the diplomatic mindset, leadership acumen, and geopolitical awareness of India's next generation.
+          At YANF, we believe that the future is not something to be awaited, it is something to be built.
         </p>
-        <p className="font-serif text-lg text-cream-soft leading-[1.85] opacity-90 mb-8">
-          Founded on the belief that today's youth are tomorrow's nation-builders, YANF creates immersive environments where young minds learn to debate, deliberate, and lead with confidence and conviction.
+        <p className="font-serif text-lg text-cream-soft leading-[1.85] opacity-90 mb-6">
+          Founded by leaders with over a decade of experience in youth development, YANF was established with a singular vision — to empower the new generation with the mindset, skills, and confidence to lead in an ever-evolving global landscape.
         </p>
-        <div className="grid grid-cols-2 gap-4">
-          {[
-            { label: "For Whom", value: "Students aged 13–25" },
-            { label: "Founded", value: "2026, India" },
-            { label: "Focus", value: "Diplomacy & Leadership" },
-            { label: "Mode", value: "Events, Workshops & Summits" },
-          ].map((f) => (
-            <div key={f.label} className="border-l-2 border-primary pl-4">
-              <div className="text-[0.65rem] font-semibold tracking-[0.2em] uppercase text-primary mb-1 font-body">{f.label}</div>
-              <div className="font-serif text-[0.95rem] text-cream-soft">{f.value}</div>
-            </div>
-          ))}
-        </div>
+        <p className="font-serif text-lg text-cream-soft leading-[1.85] opacity-90 mb-6">
+          We are committed to nurturing entrepreneurial thinking, fostering innovation, and cultivating a strong sense of diplomacy among students. Through our initiatives, we aim to equip young minds not only to create opportunities for themselves but to design meaningful solutions for the challenges of tomorrow.
+        </p>
+        <p className="font-serif text-lg text-cream-soft leading-[1.85] opacity-90 mb-6">
+          At our core, YANF stands for collaboration, leadership, and impact. We strive to develop individuals who can think critically, negotiate effectively, and represent their ideas with clarity and conviction — whether on a local stage or a global platform.
+        </p>
+        <p className="font-serif text-lg text-cream-soft leading-[1.85] opacity-90 mb-6">
+          As we embark on this journey, we invite you to be a part of a movement that goes beyond learning — a movement that builds leaders, inspires change, and shapes the future.
+        </p>
+        <p className="font-serif text-lg text-cream-soft leading-[1.85] opacity-90 italic">
+          Welcome to a community where ideas transform into action, and potential turns into impact.
+        </p>
       </motion.div>
     </div>
   </section>
