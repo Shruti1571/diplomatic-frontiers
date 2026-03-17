@@ -13,7 +13,7 @@ export default {
     extend: {
       fontFamily: {
         display: ['"Cinzel"', 'serif'],
-        serif: ['"Cormorant Garamond"', 'serif'],
+        serif: ['"Lora"', 'serif'],
         body: ['"Raleway"', 'sans-serif'],
       },
       colors: {
