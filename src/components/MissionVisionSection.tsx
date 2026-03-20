@@ -38,10 +38,9 @@ const MissionVisionSection = () => (
             <div className="absolute left-0 top-0 bottom-0 w-[3px]"
               style={{ background: "linear-gradient(180deg, hsl(var(--gold)), hsl(var(--crimson)))" }}
             />
-            <div className="text-2xl mb-3">🎯</div>
             <div className="font-display text-[0.85rem] font-semibold tracking-[0.2em] uppercase text-primary mb-3">Our Mission</div>
-            <p className="font-serif text-base leading-[1.75] text-cream-soft opacity-85">
-              To empower young Indians with the skills of diplomacy, critical thinking, and fearless expression — transforming students into confident world citizens who understand global affairs and lead with integrity.
+            <p className="font-body text-base leading-[1.75] text-cream-soft opacity-85">
+              To transform students into future-ready, responsible citizens who lead with clarity, speak with confidence, and act with purpose, fostering entrepreneurship, diplomacy, and the courage to ask the questions that drive real change.
             </p>
           </div>
 
