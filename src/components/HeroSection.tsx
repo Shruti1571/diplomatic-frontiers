@@ -91,9 +91,9 @@ const HeroSection = ({ onJoinClick }: { onJoinClick: () => void }) => {
       <div className="relative z-[2] w-full max-w-[900px] px-8 mt-16 mb-8 flex gap-[1px]"
         style={{ animation: "heroFadeIn 1.8s ease forwards" }}
       >
-        <CounterCard target={100} label="Events Conducted<br/>& Growing" />
-        <CounterCard target={10000} label="Students Who<br/>Participated" />
-        <CounterCard target={50} label="Highly Qualified<br/>Chairs" />
+        <CounterCard target={250} label="Events Contributed<br/>To & Counting" />
+        <CounterCard target={10000} label="Students Reached<br/>& Empowered" />
+        <CounterCard target={50} label="Highly Qualified &<br/>Experienced EB's" />
       </div>
     </section>
   );
