@@ -2,14 +2,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const members = [
-  { name: "Arjun Mehta", role: "MUN Chair", emoji: "👤" },
-  { name: "Priya Sharma", role: "Debate Lead", emoji: "👤" },
-  { name: "Rohan Das", role: "Innovation Head", emoji: "👤" },
-  { name: "Ananya Gupta", role: "Youth Parliament", emoji: "👤" },
-  { name: "Karan Singh", role: "Community Lead", emoji: "👤" },
-  { name: "Tara Bose", role: "Events Coordinator", emoji: "👤" },
-  { name: "Vikram Patel", role: "Secretary-General", emoji: "👤" },
-  { name: "Isha Reddy", role: "Research Head", emoji: "👤" },
+  { name: "Aditya Kumar", role: "Founder", emoji: "👤" },
+  { name: "Priya Sharma", role: "Co-Founder", emoji: "👤" },
 ];
 
 const CommunitySection = ({ onJoinClick }: { onJoinClick: () => void }) => {
