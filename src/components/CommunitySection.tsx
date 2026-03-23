@@ -7,12 +7,6 @@ const members = [
 ];
 
 const CommunitySection = ({ onJoinClick }: { onJoinClick: () => void }) => {
-  const [idx, setIdx] = useState(0);
-
-  const slide = (dir: number) => {
-    const max = Math.max(0, members.length - 5);
-    setIdx((prev) => Math.max(0, Math.min(prev + dir, max)));
-  };
 
   return (
     <section id="community" className="section-padding"
