@@ -7,6 +7,8 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import UnderConstruction from "./pages/UnderConstruction.tsx";
 import MUNPage from "./pages/MUNPage.tsx";
+import DebatesPage from "./pages/DebatesPage.tsx";
+import YouthParliamentPage from "./pages/YouthParliamentPage.tsx";
 
 
 const queryClient = new QueryClient();
