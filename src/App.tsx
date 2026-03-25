@@ -7,6 +7,8 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import UnderConstruction from "./pages/UnderConstruction.tsx";
 import MUNPage from "./pages/MUNPage.tsx";
+import DebatesPage from "./pages/DebatesPage.tsx";
+import YouthParliamentPage from "./pages/YouthParliamentPage.tsx";
 
 
 const queryClient = new QueryClient();
@@ -21,8 +23,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/events/muns" element={<MUNPage />} />
-          <Route path="/events/debates" element={<UnderConstruction />} />
-          <Route path="/events/youth-parliament" element={<UnderConstruction />} />
+          <Route path="/events/debates" element={<DebatesPage />} />
+          <Route path="/events/youth-parliament" element={<YouthParliamentPage />} />
           <Route path="/events/innovation-assembly" element={<UnderConstruction />} />
           <Route path="/blogs" element={<UnderConstruction />} />
           <Route path="/gallery" element={<UnderConstruction />} />
