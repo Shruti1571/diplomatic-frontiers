@@ -26,7 +26,7 @@ const App = () => (
           <Route path="/events/muns" element={<MUNPage />} />
           <Route path="/events/debates" element={<DebatesPage />} />
           <Route path="/events/youth-parliament" element={<YouthParliamentPage />} />
-          <Route path="/events/innovation-assembly" element={<UnderConstruction />} />
+          <Route path="/events/innovation-assembly" element={<InnovationAssemblyPage />} />
           <Route path="/blogs" element={<UnderConstruction />} />
           <Route path="/gallery" element={<UnderConstruction />} />
           <Route path="/hall-of-fame" element={<UnderConstruction />} />
