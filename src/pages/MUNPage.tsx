@@ -175,15 +175,30 @@ const MUNPage = () => {
           <div className="gold-line mx-auto mb-14" />
 
           {/* Radial skill layout */}
-          <div className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] mx-auto">
+          <div className="relative w-[340px] h-[340px] md:w-[520px] md:h-[520px] mx-auto">
+            {/* Connecting lines (SVG) */}
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" fill="none">
+              {skills.map((_, i) => {
+                const angle = (i / skills.length) * 2 * Math.PI - Math.PI / 2;
+                const radius = 40;
+                const x = 50 + radius * Math.cos(angle);
+                const y = 50 + radius * Math.sin(angle);
+                return (
+                  <line key={i} x1="50" y1="50" x2={x} y2={y}
+                    stroke="hsl(42 55% 54% / 0.15)" strokeWidth="0.3"
+                  />
+                );
+              })}
+            </svg>
+
             {/* Center */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center z-10"
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center z-10"
               style={{
                 background: "linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)))",
                 boxShadow: "0 0 60px hsl(var(--gold) / 0.3)",
               }}
             >
-              <span className="font-display text-[0.8rem] md:text-[0.9rem] font-bold tracking-[0.1em] uppercase" style={{ color: "hsl(var(--navy))" }}>
+              <span className="font-display text-[0.9rem] md:text-[1.1rem] font-bold tracking-[0.12em] uppercase leading-tight text-center" style={{ color: "hsl(var(--navy))" }}>
                 MUN<br/>Skills
               </span>
             </div>
@@ -191,7 +206,7 @@ const MUNPage = () => {
             {/* Skill nodes */}
             {skills.map((skill, i) => {
               const angle = (i / skills.length) * 2 * Math.PI - Math.PI / 2;
-              const radius = 42; // percentage
+              const radius = 40; // percentage from center
               const x = 50 + radius * Math.cos(angle);
               const y = 50 + radius * Math.sin(angle);
 
@@ -202,35 +217,20 @@ const MUNPage = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, type: "spring" }}
-                  className="absolute flex flex-col items-center gap-1 -translate-x-1/2 -translate-y-1/2"
+                  className="absolute flex flex-col items-center gap-1.5 -translate-x-1/2 -translate-y-1/2"
                   style={{ left: `${x}%`, top: `${y}%` }}
                 >
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-xl md:text-2xl"
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl"
                     style={{ background: "hsl(var(--navy-light))", border: "1px solid hsl(var(--gold) / 0.4)" }}
                   >
                     {skill.icon}
                   </div>
-                  <span className="font-body text-[0.6rem] md:text-[0.65rem] text-muted-foreground text-center leading-tight max-w-[80px]">
+                  <span className="font-body text-[0.65rem] md:text-[0.75rem] text-muted-foreground text-center leading-tight max-w-[90px]">
                     {skill.name}
                   </span>
                 </motion.div>
               );
             })}
-
-            {/* Connecting lines (SVG) */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" fill="none">
-              {skills.map((_, i) => {
-                const angle = (i / skills.length) * 2 * Math.PI - Math.PI / 2;
-                const radius = 42;
-                const x = 50 + radius * Math.cos(angle);
-                const y = 50 + radius * Math.sin(angle);
-                return (
-                  <line key={i} x1="50" y1="50" x2={x} y2={y}
-                    stroke="hsl(42 55% 54% / 0.15)" strokeWidth="0.3"
-                  />
-                );
-              })}
-            </svg>
           </div>
         </motion.div>
       </section>
