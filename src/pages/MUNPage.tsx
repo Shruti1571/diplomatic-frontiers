@@ -18,7 +18,7 @@ const gains = [
   { name: "Negotiation", desc: "Build consensus and forge alliances", icon: Handshake },
   { name: "Critical Thinking", desc: "Analyse problems from multiple perspectives", icon: Brain },
   { name: "Drafting & Writing", desc: "Craft resolutions and position papers", icon: PenTool },
-  { name: "Diplomacy", desc: "Navigate complex international relations", icon: Dove },
+  { name: "Diplomacy", desc: "Navigate complex international relations", icon: Heart },
   { name: "Leadership", desc: "Guide teams and drive outcomes", icon: Crown },
   { name: "Global Awareness", desc: "Understand world affairs and geopolitics", icon: Globe },
 ];
