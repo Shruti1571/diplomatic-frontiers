@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Mic, Search, Handshake, Brain, PenTool, Dove, Crown, Globe } from "lucide-react";
+import { ArrowLeft, Mic, Search, Handshake, Brain, PenTool, Heart, Crown, Globe } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import InnovationParticles from "@/components/InnovationParticles";
