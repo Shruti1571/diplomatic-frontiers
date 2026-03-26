@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Swords, Zap, Brain, Target, MessageCircle, Flame, Search, Mic } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import RadialSkillsDiagram from "@/components/RadialSkillsDiagram";
+import InnovationParticles from "@/components/InnovationParticles";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -21,14 +21,14 @@ const whyDebate = [
 ];
 
 const gains = [
-  { name: "Argumentation", icon: "⚔️" },
-  { name: "Rapid Response", icon: "⚡" },
-  { name: "Logical Thinking", icon: "🧠" },
-  { name: "Persuasion", icon: "🎯" },
-  { name: "Communication", icon: "💬" },
-  { name: "Confidence", icon: "🔥" },
-  { name: "Analytical Reasoning", icon: "🔍" },
-  { name: "Professional Speaking", icon: "🎤" },
+  { name: "Argumentation", desc: "Build and deconstruct arguments with precision", icon: Swords },
+  { name: "Rapid Response", desc: "Think on your feet under pressure", icon: Zap },
+  { name: "Logical Thinking", desc: "Reason clearly and identify fallacies", icon: Brain },
+  { name: "Persuasion", desc: "Win minds with compelling rhetoric", icon: Target },
+  { name: "Communication", desc: "Express ideas with clarity and impact", icon: MessageCircle },
+  { name: "Confidence", desc: "Command the floor with conviction", icon: Flame },
+  { name: "Analytical Reasoning", desc: "Break down complex issues systematically", icon: Search },
+  { name: "Professional Speaking", desc: "Deliver polished, structured speeches", icon: Mic },
 ];
 
 const formats = [
@@ -62,211 +62,249 @@ const resources = [
 
 const DebatesPage = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
+    <div className="min-h-screen bg-background text-foreground relative">
+      <InnovationParticles />
+      <div className="relative z-10">
+        <Navbar />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 px-6 md:px-16 text-center overflow-hidden"
-        style={{ background: "linear-gradient(180deg, hsl(var(--navy)) 0%, hsl(var(--navy2)) 100%)" }}
-      >
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: "radial-gradient(circle at 30% 50%, hsl(var(--gold) / 0.2) 0%, transparent 60%)" }}
-        />
-        <motion.div {...fadeUp} className="relative z-10 max-w-3xl mx-auto">
-          <Link to="/" className="inline-flex items-center gap-2 text-primary/70 hover:text-primary text-sm font-body mb-8 transition-colors">
-            <ArrowLeft size={16} /> Back to Home
-          </Link>
-          <div className="section-label">Events</div>
-          <h1 className="font-display font-bold text-foreground leading-tight mb-4"
-            style={{ fontSize: "clamp(2.2rem, 5vw, 3.5rem)" }}
-          >
-            Parliamentary Debates <span className="text-gradient-gold">×</span> YANF
-          </h1>
-          <p className="font-display text-primary/80 text-lg italic tracking-wide">
-            Argue. Rebut. Persuade.
-          </p>
-          <p className="font-body text-muted-foreground mt-4 max-w-xl mx-auto leading-relaxed">
-            Where the right argument, delivered at the right moment, wins.
-          </p>
-        </motion.div>
-      </section>
+        {/* Hero */}
+        <section className="relative pt-32 pb-24 px-6 md:px-16 text-center overflow-hidden">
+          <div className="absolute inset-0" style={{
+            background: "radial-gradient(ellipse at 50% 30%, hsl(var(--gold) / 0.08) 0%, transparent 70%)",
+          }} />
+          <motion.div {...fadeUp} className="relative z-10 max-w-3xl mx-auto">
+            <Link to="/" className="inline-flex items-center gap-2 text-primary/70 hover:text-primary text-sm font-body mb-8 transition-colors">
+              <ArrowLeft size={16} /> Back to Home
+            </Link>
+            <div className="section-label">Events</div>
+            <h1 className="font-display font-bold text-foreground leading-tight mb-4"
+              style={{ fontSize: "clamp(2.2rem, 5vw, 3.5rem)" }}
+            >
+              Parliamentary Debates <span className="text-gradient-gold">×</span> YANF
+            </h1>
+            <p className="font-display text-primary/80 text-lg italic tracking-wide">
+              Argue. Rebut. Persuade.
+            </p>
+            <p className="font-body text-white mt-4 max-w-xl mx-auto leading-relaxed">
+              Where the right argument, delivered at the right moment, wins.
+            </p>
+          </motion.div>
+        </section>
 
-      {/* What is Parliamentary Debate */}
-      <section className="section-padding" style={{ background: "hsl(var(--navy2))", borderTop: "1px solid hsl(var(--border))" }}>
-        <motion.div {...fadeUp} className="max-w-[900px] mx-auto">
-          <div className="section-label">Understanding the Platform</div>
-          <h2 className="section-title">What is <span>Parliamentary Debate?</span></h2>
-          <div className="gold-line mb-8" />
-          <p className="font-body text-muted-foreground leading-[1.9] text-[1rem]">
-            Parliamentary Debate at YANF is not just a debate — it is a structured battlefield of ideas, logic, and rhetoric
-            where young minds learn to argue with precision, think on their feet, and defend their stance with conviction.
-            Unlike general debates, Parliamentary Debate follows internationally recognised formats that are practiced in
-            academic and professional circles across the globe.
-          </p>
-        </motion.div>
-      </section>
+        {/* What is Parliamentary Debate */}
+        <section className="section-padding" style={{ borderTop: "1px solid hsl(var(--border))" }}>
+          <motion.div {...fadeUp} className="max-w-[900px] mx-auto">
+            <div className="section-label">Understanding the Platform</div>
+            <h2 className="section-title">What is <span>Parliamentary Debate?</span></h2>
+            <div className="gold-line mb-8" />
+            <p className="font-body text-white leading-[1.9] text-[1rem]">
+              Parliamentary Debate at YANF is not just a debate — it is a structured battlefield of ideas, logic, and rhetoric
+              where young minds learn to argue with precision, think on their feet, and defend their stance with conviction.
+              Unlike general debates, Parliamentary Debate follows internationally recognised formats that are practiced in
+              academic and professional circles across the globe.
+            </p>
+          </motion.div>
+        </section>
 
-      {/* Why Parliamentary Debate */}
-      <section className="section-padding" style={{ background: "hsl(var(--navy))", borderTop: "1px solid hsl(var(--border))" }}>
-        <motion.div {...fadeUp} className="max-w-[900px] mx-auto">
-          <div className="section-label">The Value Proposition</div>
-          <h2 className="section-title">Why <span>Parliamentary Debate?</span></h2>
-          <div className="gold-line mb-10" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {whyDebate.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="flex items-start gap-4 p-5 rounded-sm transition-all hover:translate-x-1"
-                style={{ background: "hsl(var(--navy-light))", border: "1px solid hsl(var(--border))" }}
-              >
-                <span className="text-2xl flex-shrink-0 mt-0.5">{item.icon}</span>
-                <p className="font-body text-muted-foreground text-[0.95rem] leading-relaxed">{item.text}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Formats We Follow */}
-      <section className="section-padding" style={{ background: "hsl(var(--navy2))", borderTop: "1px solid hsl(var(--border))" }}>
-        <motion.div {...fadeUp} className="max-w-[900px] mx-auto">
-          <div className="section-label">The Formats</div>
-          <h2 className="section-title">How it <span>Works</span></h2>
-          <div className="gold-line mb-12" />
-
-          <div className="relative">
-            <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold)), hsl(var(--gold) / 0.1))" }} />
-
-            <div className="space-y-10">
-              {formats.map((format, i) => (
+        {/* Why Parliamentary Debate */}
+        <section className="section-padding" style={{ borderTop: "1px solid hsl(var(--border))" }}>
+          <motion.div {...fadeUp} className="max-w-[900px] mx-auto">
+            <div className="section-label">The Value Proposition</div>
+            <h2 className="section-title">Why <span>Parliamentary Debate?</span></h2>
+            <div className="gold-line mb-10" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {whyDebate.map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.15 }}
-                  className="relative pl-16 md:pl-20"
+                  transition={{ delay: i * 0.08 }}
+                  className="flex items-start gap-4 p-5 rounded-sm transition-all hover:translate-x-1"
+                  style={{ background: "hsl(var(--navy-light))", border: "1px solid hsl(var(--border))" }}
                 >
-                  <div className="absolute left-3 md:left-5 top-1 w-7 h-7 rounded-full flex items-center justify-center text-[0.7rem] font-bold font-display"
-                    style={{
-                      background: "linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)))",
-                      color: "hsl(var(--navy))",
-                    }}
-                  >
-                    {i + 1}
-                  </div>
-                  <div className="p-6 rounded-sm" style={{ background: "hsl(var(--navy-light))", border: "1px solid hsl(var(--border))" }}>
-                    <div className="font-display text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-primary mb-1">{format.phase}</div>
-                    <h3 className="font-display text-xl font-bold text-foreground mb-3">{format.title}</h3>
-                    <p className="font-body text-muted-foreground text-[0.95rem] leading-[1.8] mb-4">{format.desc}</p>
-                    <ul className="space-y-1.5">
-                      {format.details.map((d, j) => (
-                        <li key={j} className="font-body text-muted-foreground text-[0.85rem] flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span> {d}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <span className="text-2xl flex-shrink-0 mt-0.5">{item.icon}</span>
+                  <p className="font-body text-white text-[0.95rem] leading-relaxed">{item.text}</p>
                 </motion.div>
               ))}
             </div>
-          </div>
-        </motion.div>
-      </section>
+          </motion.div>
+        </section>
 
-      {/* What Students Gain */}
-      <section className="section-padding" style={{ background: "hsl(var(--navy))", borderTop: "1px solid hsl(var(--border))" }}>
-        <motion.div {...fadeUp} className="max-w-[900px] mx-auto text-center">
-          <div className="section-label">What You'll Develop</div>
-          <h2 className="section-title">What Students <span>Gain</span></h2>
-          <div className="gold-line mx-auto mb-14" />
+        {/* Formats */}
+        <section className="section-padding" style={{ borderTop: "1px solid hsl(var(--border))" }}>
+          <motion.div {...fadeUp} className="max-w-[900px] mx-auto">
+            <div className="section-label">The Formats</div>
+            <h2 className="section-title">How it <span>Works</span></h2>
+            <div className="gold-line mb-12" />
 
-          <RadialSkillsDiagram skills={gains} centerLabel="Debate<br/>Skills" />
-        </motion.div>
-      </section>
+            <div className="relative">
+              <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold)), hsl(var(--gold) / 0.1))" }} />
+              <div className="space-y-10">
+                {formats.map((format, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 }}
+                    className="relative pl-16 md:pl-20"
+                  >
+                    <div className="absolute left-3 md:left-5 top-1 w-7 h-7 rounded-full flex items-center justify-center text-[0.7rem] font-bold font-display"
+                      style={{
+                        background: "linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)))",
+                        color: "hsl(var(--navy))",
+                      }}
+                    >
+                      {i + 1}
+                    </div>
+                    <div className="p-6 rounded-sm" style={{ background: "hsl(var(--navy-light))", border: "1px solid hsl(var(--border))" }}>
+                      <div className="font-display text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-primary mb-1">{format.phase}</div>
+                      <h3 className="font-display text-xl font-bold text-foreground mb-3">{format.title}</h3>
+                      <p className="font-body text-white text-[0.95rem] leading-[1.8] mb-4">{format.desc}</p>
+                      <ul className="space-y-1.5">
+                        {format.details.map((d, j) => (
+                          <li key={j} className="font-body text-white/80 text-[0.85rem] flex items-start gap-2">
+                            <span className="text-primary mt-1">•</span> {d}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </section>
 
-      {/* Event Highlights */}
-      <section className="section-padding" style={{ background: "hsl(var(--navy2))", borderTop: "1px solid hsl(var(--border))" }}>
-        <motion.div {...fadeUp} className="max-w-[900px] mx-auto">
-          <div className="section-label">At a Glance</div>
-          <h2 className="section-title">Event <span>Highlights</span></h2>
-          <div className="gold-line mb-10" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {highlights.map((h, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-6 rounded-sm"
-                style={{ background: "hsl(var(--navy-light))", border: "1px solid hsl(var(--border))" }}
-              >
-                <div className="font-display text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-primary mb-2">{h.label}</div>
-                <p className="font-body text-foreground text-[1rem]">{h.value}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
+        {/* What Students Gain — Bento Grid */}
+        <section className="section-padding" style={{ borderTop: "1px solid hsl(var(--border))" }}>
+          <motion.div {...fadeUp} className="max-w-[1000px] mx-auto">
+            <div className="section-label text-center">What You'll Develop</div>
+            <h2 className="section-title text-center">What Students <span>Gain</span></h2>
+            <div className="gold-line mx-auto mb-14" />
 
-      {/* Explore Debate Resources */}
-      <section className="section-padding" style={{ background: "hsl(var(--navy))", borderTop: "1px solid hsl(var(--border))" }}>
-        <motion.div {...fadeUp} className="max-w-[1000px] mx-auto">
-          <div className="section-label">Explore Global Debate Platforms</div>
-          <h2 className="section-title">Debate <span>Resources</span></h2>
-          <div className="gold-line mb-4" />
-          <p className="font-body text-muted-foreground mb-10 max-w-2xl leading-relaxed">
-            Sharpen your debate skills by exploring these globally recognised debate organisations and resources.
-          </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {gains.map((skill, i) => {
+                const Icon = skill.icon;
+                return (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, type: "spring", stiffness: 120 }}
+                    whileHover={{ y: -8, scale: 1.03 }}
+                    className="group relative p-8 rounded-lg overflow-hidden cursor-default"
+                    style={{
+                      background: "hsl(var(--navy-light))",
+                      border: "1px solid hsl(var(--border))",
+                    }}
+                  >
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{ background: "radial-gradient(circle at 50% 0%, hsl(var(--gold) / 0.12) 0%, transparent 70%)" }}
+                    />
+                    <div className="absolute top-0 left-0 right-0 h-[2px] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+                      style={{ background: "linear-gradient(90deg, hsl(var(--gold)), hsl(var(--gold-light)))" }}
+                    />
+                    <div className="relative z-10">
+                      <div className="w-14 h-14 rounded-full flex items-center justify-center mb-5"
+                        style={{
+                          background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), hsl(var(--gold) / 0.05))",
+                          border: "1px solid hsl(var(--gold) / 0.3)",
+                        }}
+                      >
+                        <Icon size={24} style={{ color: "hsl(var(--gold))" }} />
+                      </div>
+                      <h3 className="font-display text-lg font-bold text-foreground mb-2">{skill.name}</h3>
+                      <p className="font-body text-white text-[0.9rem] leading-relaxed">{skill.desc}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {resources.map((body, i) => (
-              <motion.a
-                key={body.abbr}
-                href={body.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="group relative p-6 rounded-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,0,0,0.4)]"
-                style={{ background: "hsl(var(--navy-light))", border: "1px solid hsl(var(--border))" }}
-              >
-                <div className="absolute top-0 left-0 right-0 h-[2px] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
-                  style={{ background: "linear-gradient(90deg, hsl(var(--gold)), hsl(var(--gold-light)))" }}
-                />
-                <div className="font-display text-2xl font-bold text-primary mb-1">{body.abbr}</div>
-                <div className="font-body text-foreground text-[0.85rem] font-medium mb-1">{body.name}</div>
-                <div className="font-body text-muted-foreground text-[0.8rem]">{body.desc}</div>
-                <div className="mt-4 font-body text-[0.7rem] tracking-[0.12em] uppercase text-primary/60 group-hover:text-primary transition-colors">
-                  Visit Website →
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
-      </section>
+        {/* Event Highlights */}
+        <section className="section-padding" style={{ borderTop: "1px solid hsl(var(--border))" }}>
+          <motion.div {...fadeUp} className="max-w-[900px] mx-auto">
+            <div className="section-label">At a Glance</div>
+            <h2 className="section-title">Event <span>Highlights</span></h2>
+            <div className="gold-line mb-10" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {highlights.map((h, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="p-6 rounded-sm"
+                  style={{ background: "hsl(var(--navy-light))", border: "1px solid hsl(var(--border))" }}
+                >
+                  <div className="font-display text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-primary mb-2">{h.label}</div>
+                  <p className="font-body text-white text-[1rem]">{h.value}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
 
-      {/* CTA */}
-      <section className="section-padding text-center" style={{ background: "hsl(var(--navy2))", borderTop: "1px solid hsl(var(--border))" }}>
-        <motion.div {...fadeUp} className="max-w-lg mx-auto">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Think you can win the <span className="text-gradient-gold">floor</span>?
-          </h2>
-          <p className="font-body text-muted-foreground mb-8">Register for YANF Parliamentary Debates today.</p>
-          <Link to="/" className="btn-primary-yanf inline-block">
-            Back to Home
-          </Link>
-        </motion.div>
-      </section>
+        {/* Explore Debate Resources */}
+        <section className="section-padding" style={{ borderTop: "1px solid hsl(var(--border))" }}>
+          <motion.div {...fadeUp} className="max-w-[1000px] mx-auto">
+            <div className="section-label">Explore Global Debate Platforms</div>
+            <h2 className="section-title">Debate <span>Resources</span></h2>
+            <div className="gold-line mb-4" />
+            <p className="font-body text-white mb-10 max-w-2xl leading-relaxed">
+              Sharpen your debate skills by exploring these globally recognised debate organisations and resources.
+            </p>
 
-      <Footer />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {resources.map((body, i) => (
+                <motion.a
+                  key={body.abbr}
+                  href={body.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="group relative p-6 rounded-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,0,0,0.4)]"
+                  style={{ background: "hsl(var(--navy-light))", border: "1px solid hsl(var(--border))" }}
+                >
+                  <div className="absolute top-0 left-0 right-0 h-[2px] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+                    style={{ background: "linear-gradient(90deg, hsl(var(--gold)), hsl(var(--gold-light)))" }}
+                  />
+                  <div className="font-display text-2xl font-bold text-primary mb-1">{body.abbr}</div>
+                  <div className="font-body text-white text-[0.85rem] font-medium mb-1">{body.name}</div>
+                  <div className="font-body text-white/70 text-[0.8rem]">{body.desc}</div>
+                  <div className="mt-4 font-body text-[0.7rem] tracking-[0.12em] uppercase text-primary/60 group-hover:text-primary transition-colors">
+                    Visit Website →
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
+        {/* CTA */}
+        <section className="section-padding text-center" style={{ borderTop: "1px solid hsl(var(--border))" }}>
+          <motion.div {...fadeUp} className="max-w-lg mx-auto">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+              Think you can win the <span className="text-gradient-gold">floor</span>?
+            </h2>
+            <p className="font-body text-white mb-8">Register for YANF Parliamentary Debates today.</p>
+            <Link to="/" className="btn-primary-yanf inline-block">
+              Back to Home
+            </Link>
+          </motion.div>
+        </section>
+
+        <Footer />
+      </div>
     </div>
   );
 };
