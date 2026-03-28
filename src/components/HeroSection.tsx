@@ -54,7 +54,7 @@ const HeroSection = ({ onJoinClick }: { onJoinClick: () => void }) => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-28">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20 sm:pt-28">
       <GalaxyBackground />
 
       {/* Subtle edge fade */}

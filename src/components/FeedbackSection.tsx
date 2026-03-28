@@ -59,7 +59,7 @@ const FeedbackSection = () => {
         <p className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-3">
           What Leaders Say
         </p>
-        <h2 className="font-display text-[2.8rem] md:text-[3.5rem] font-bold leading-[1.1] tracking-[-0.02em] uppercase">
+        <h2 className="font-display text-[1.8rem] sm:text-[2.8rem] md:text-[3.5rem] font-bold leading-[1.1] tracking-[-0.02em] uppercase">
           <span className="text-foreground">Voices of </span>
           <span className="text-gold">Authority</span>
         </h2>
