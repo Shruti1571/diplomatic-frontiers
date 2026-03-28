@@ -84,7 +84,7 @@ const FeedbackSection = () => {
               key={`${t.name}-${i}`}
               className="flex-shrink-0 p-8 flex flex-col justify-between"
               style={{
-                width: "420px",
+                width: "min(420px, 85vw)",
                 minHeight: "200px",
                 background: "hsl(var(--navy-light))",
                 border: "1px solid hsl(var(--border))",
