@@ -38,7 +38,7 @@ const CounterCard = ({ target, label }: { target: number; label: string }) => {
       <div className="absolute top-0 left-0 right-0 h-[2px]"
         style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold)), transparent)" }}
       />
-      <div className="font-display text-4xl font-bold text-primary leading-none mb-1.5">
+      <div className="font-display text-2xl sm:text-4xl font-bold text-primary leading-none mb-1.5">
         {display}
       </div>
       <div className="text-[0.72rem] font-medium tracking-[0.15em] uppercase text-muted-foreground leading-snug font-body"
