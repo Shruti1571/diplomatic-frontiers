@@ -65,7 +65,7 @@ const MissionVisionSection = () => (
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative h-[560px] rounded overflow-hidden"
+        className="relative h-[400px] md:h-[560px] rounded overflow-hidden"
       >
         <div className="absolute inset-0"
           style={{

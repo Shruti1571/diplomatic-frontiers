@@ -12,7 +12,7 @@ const AboutSection = () => (
         transition={{ duration: 0.7 }}
         className="flex items-center justify-center"
       >
-        <div className="relative w-[340px] h-[340px] md:w-[460px] md:h-[460px] flex items-center justify-center">
+        <div className="relative w-[220px] h-[220px] sm:w-[340px] sm:h-[340px] md:w-[460px] md:h-[460px] flex items-center justify-center">
           <img src={yanfLogo} alt="YANF Logo" className="w-full h-full object-contain" />
         </div>
       </motion.div>

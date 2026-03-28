@@ -28,7 +28,7 @@ const CounterCard = ({ target, label }: { target: number; label: string }) => {
     : count + "+";
 
   return (
-    <div ref={ref} className="flex-1 text-center py-7 px-6 relative overflow-hidden"
+    <div ref={ref} className="flex-1 w-full text-center py-5 sm:py-7 px-4 sm:px-6 relative overflow-hidden"
       style={{
         background: "rgba(13,18,36,0.8)",
         border: "1px solid hsl(var(--border))",
@@ -38,7 +38,7 @@ const CounterCard = ({ target, label }: { target: number; label: string }) => {
       <div className="absolute top-0 left-0 right-0 h-[2px]"
         style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold)), transparent)" }}
       />
-      <div className="font-display text-4xl font-bold text-primary leading-none mb-1.5">
+      <div className="font-display text-2xl sm:text-4xl font-bold text-primary leading-none mb-1.5">
         {display}
       </div>
       <div className="text-[0.72rem] font-medium tracking-[0.15em] uppercase text-muted-foreground leading-snug font-body"
@@ -54,7 +54,7 @@ const HeroSection = ({ onJoinClick }: { onJoinClick: () => void }) => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-28">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20 sm:pt-28">
       <GalaxyBackground />
 
       {/* Subtle edge fade */}
@@ -63,32 +63,32 @@ const HeroSection = ({ onJoinClick }: { onJoinClick: () => void }) => {
       />
 
       {/* Content */}
-      <div className="relative z-[2] text-center px-8 max-w-[900px] animate-hero-fade-in">
-        <div className="font-display text-[0.7rem] font-normal tracking-[0.35em] uppercase text-primary mb-6 opacity-85">
+      <div className="relative z-[2] text-center px-4 sm:px-8 max-w-[900px] animate-hero-fade-in">
+        <div className="font-display text-[0.6rem] sm:text-[0.7rem] font-normal tracking-[0.25em] sm:tracking-[0.35em] uppercase text-primary mb-4 sm:mb-6 opacity-85">
           Est. 2026 &nbsp;·&nbsp; Empowering India's Youth
         </div>
         <h1 className="font-display font-black leading-[0.95] text-white mb-2"
-          style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)", letterSpacing: "-0.01em" }}
+          style={{ fontSize: "clamp(2rem, 7vw, 6rem)", letterSpacing: "-0.01em" }}
         >
           <span className="text-primary">The</span> Architecture<br />
           of <span className="text-primary">Influence</span>
         </h1>
-        <p className="font-serif italic text-cream-soft tracking-[0.05em] mb-10 opacity-85"
-          style={{ fontSize: "clamp(1rem, 2.5vw, 1.5rem)", fontWeight: 300 }}
+        <p className="font-serif italic text-cream-soft tracking-[0.02em] sm:tracking-[0.05em] mb-6 sm:mb-10 opacity-85"
+          style={{ fontSize: "clamp(0.9rem, 2.5vw, 1.5rem)", fontWeight: 300 }}
         >
           Shaping tomorrow's diplomats, leaders &amp; changemakers
         </p>
-        <p className="font-body text-[0.8rem] font-medium tracking-[0.2em] uppercase text-muted-foreground mb-10">
+        <p className="font-body text-[0.65rem] sm:text-[0.8rem] font-medium tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground mb-6 sm:mb-10">
           MUNs · Debates · Youth Parliament · Innovation Assembly
         </p>
-        <div className="flex gap-4 justify-center flex-wrap">
-          <button onClick={onJoinClick} className="btn-primary-yanf">Join the Movement</button>
-          <button onClick={scrollToAbout} className="btn-outline-yanf">Discover YANF</button>
+        <div className="flex gap-3 sm:gap-4 justify-center flex-wrap">
+          <button onClick={onJoinClick} className="btn-primary-yanf text-[0.68rem] sm:text-[0.78rem] py-3 px-6 sm:py-4 sm:px-10">Join the Movement</button>
+          <button onClick={scrollToAbout} className="btn-outline-yanf text-[0.68rem] sm:text-[0.78rem] py-3 px-6 sm:py-4 sm:px-10">Discover YANF</button>
         </div>
       </div>
 
       {/* Stat cards */}
-      <div className="relative z-[2] w-full max-w-[900px] px-8 mt-16 mb-8 flex gap-[1px]"
+      <div className="relative z-[2] w-full max-w-[900px] px-4 sm:px-8 mt-10 sm:mt-16 mb-8 flex flex-col sm:flex-row gap-[1px]"
         style={{ animation: "heroFadeIn 1.8s ease forwards" }}
       >
         <CounterCard target={250} label="Events Contributed<br/>To & Counting" />

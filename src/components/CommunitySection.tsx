@@ -30,10 +30,10 @@ const CommunitySection = ({ onJoinClick }: { onJoinClick: () => void }) => {
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="max-w-[1200px] mx-auto flex justify-center gap-8"
+        className="max-w-[1200px] mx-auto flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 px-4"
       >
         {members.map((m) => (
-          <div key={m.name} className="w-[300px] text-center group">
+          <div key={m.name} className="w-full max-w-[280px] sm:w-[300px] text-center group">
             <div
               className="w-full aspect-square flex items-center justify-center text-5xl mb-4 relative overflow-hidden transition-all"
               style={{
