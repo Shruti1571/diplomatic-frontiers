@@ -28,7 +28,7 @@ const CounterCard = ({ target, label }: { target: number; label: string }) => {
     : count + "+";
 
   return (
-    <div ref={ref} className="flex-1 text-center py-7 px-6 relative overflow-hidden"
+    <div ref={ref} className="flex-1 w-full text-center py-5 sm:py-7 px-4 sm:px-6 relative overflow-hidden"
       style={{
         background: "rgba(13,18,36,0.8)",
         border: "1px solid hsl(var(--border))",
