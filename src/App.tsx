@@ -49,6 +49,7 @@ const App = () => {
           <Route path="/gallery" element={<UnderConstruction />} />
           <Route path="/hall-of-fame" element={<UnderConstruction />} />
           <Route path="/certifications" element={<UnderConstruction />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
