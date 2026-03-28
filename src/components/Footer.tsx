@@ -74,8 +74,10 @@ const Footer = () => (
 
     {/* Bottom */}
     <div className="max-w-[1200px] mx-auto pt-8 border-t border-border flex items-center justify-between flex-wrap gap-4">
-      <div className="text-[0.72rem] text-muted-foreground tracking-[0.1em] font-body">
-        © 2026 <span className="text-primary">YANF</span> — Youth As Nation's Front. All rights reserved.
+      <div className="text-[0.72rem] text-muted-foreground tracking-[0.1em] font-body flex items-center gap-3 flex-wrap">
+        <span>© 2026 <span className="text-primary">YANF</span> — Youth As Nation's Front. All rights reserved.</span>
+        <span className="text-border">|</span>
+        <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
       </div>
       <div className="flex gap-3">
         {["in", "tw", "ig", "yt"].map((s) => (

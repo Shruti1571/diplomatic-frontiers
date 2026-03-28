@@ -12,6 +12,7 @@ import MUNPage from "./pages/MUNPage.tsx";
 import InnovationAssemblyPage from "./pages/InnovationAssemblyPage.tsx";
 import DebatesPage from "./pages/DebatesPage.tsx";
 import YouthParliamentPage from "./pages/YouthParliamentPage.tsx";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.tsx";
 
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/gallery" element={<UnderConstruction />} />
           <Route path="/hall-of-fame" element={<UnderConstruction />} />
           <Route path="/certifications" element={<UnderConstruction />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
