@@ -12,6 +12,7 @@ import MUNPage from "./pages/MUNPage.tsx";
 import InnovationAssemblyPage from "./pages/InnovationAssemblyPage.tsx";
 import DebatesPage from "./pages/DebatesPage.tsx";
 import YouthParliamentPage from "./pages/YouthParliamentPage.tsx";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.tsx";
 
 
 const queryClient = new QueryClient();
