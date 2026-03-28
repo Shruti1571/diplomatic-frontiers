@@ -9,6 +9,7 @@ import FeedbackSection from "@/components/FeedbackSection";
 import CommunitySection from "@/components/CommunitySection";
 import Footer from "@/components/Footer";
 import JoinUsForm from "@/components/JoinUsForm";
+import SectionReveal from "@/components/SectionReveal";
 
 const Index = () => {
   const [joinOpen, setJoinOpen] = useState(false);
@@ -17,13 +18,13 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar onJoinClick={() => setJoinOpen(true)} />
       <HeroSection onJoinClick={() => setJoinOpen(true)} />
-      <AboutSection />
-      <MissionVisionSection />
-      <WhyUsSection />
-      <EventsSection />
-      <FeedbackSection />
-      <CommunitySection onJoinClick={() => setJoinOpen(true)} />
-      <Footer />
+      <SectionReveal><AboutSection /></SectionReveal>
+      <SectionReveal><MissionVisionSection /></SectionReveal>
+      <SectionReveal><WhyUsSection /></SectionReveal>
+      <SectionReveal><EventsSection /></SectionReveal>
+      <SectionReveal><FeedbackSection /></SectionReveal>
+      <SectionReveal><CommunitySection onJoinClick={() => setJoinOpen(true)} /></SectionReveal>
+      <SectionReveal><Footer /></SectionReveal>
       <JoinUsForm isOpen={joinOpen} onClose={() => setJoinOpen(false)} />
     </div>
   );
