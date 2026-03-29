@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Lenis from "lenis";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,23 +12,9 @@ import DebatesPage from "./pages/DebatesPage.tsx";
 import YouthParliamentPage from "./pages/YouthParliamentPage.tsx";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.tsx";
 
-
 const queryClient = new QueryClient();
 
 const App = () => {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.4,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-    });
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    return () => lenis.destroy();
-  }, []);
 
   return (
   <QueryClientProvider client={queryClient}>
