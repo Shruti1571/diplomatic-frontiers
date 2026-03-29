@@ -25,7 +25,7 @@ const DropdownMenu = ({ items, isOpen }: { items: { label: string; path: string 
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -8 }}
         transition={{ duration: 0.25 }}
-        className="absolute top-full left-0 min-w-[200px] border border-border bg-background backdrop-blur-xl z-50"
+        className="absolute top-full left-0 min-w-[200px] border border-border bg-background backdrop-blur-xl z-50 shadow-[0_8px_30px_-4px_rgba(0,0,0,0.5)]"
         style={{ borderTop: "2px solid hsl(var(--gold))" }}
       >
         {items.map((item) => (
