@@ -33,7 +33,7 @@ const DropdownMenu = ({ items, isOpen }: { items: { label: string; path: string 
             key={item.path}
             to={item.path}
             target="_blank"
-            className="block px-5 py-2.5 text-[0.75rem] tracking-[0.08em] text-foreground/80 hover:text-primary hover:bg-primary/[0.08] hover:pl-6 transition-all border-b border-primary/[0.07] font-body"
+            className="block px-5 py-2.5 text-[0.75rem] tracking-[0.08em] text-foreground/80 hover:text-primary hover:bg-primary/[0.08] hover:pl-7 hover:tracking-[0.12em] transition-all duration-300 ease-out border-b border-primary/[0.07] font-body"
           >
             {item.label}
           </Link>
