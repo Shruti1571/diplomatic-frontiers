@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const whyItems = [
   { icon: "🏛️", title: "Expert-Led Programs", text: "Our events are guided by 50+ highly qualified chairs with backgrounds in law, policy, and international affairs." },
   { icon: "🌐", title: "Real-World Simulations", text: "From UN committees to parliamentary debates, we replicate the world's most consequential forums for students to navigate." },
-  { icon: "🤝", title: "Thriving Community", text: "Join a network of 10,000+ like-minded young leaders, all committed to growth, dialogue, and meaningful impact." },
+  { icon: "💡", title: "Innovation Assembly", text: "Our flagship innovation program empowers students to ideate, prototype, and pitch real-world solutions, bridging creativity with impact." },
   { icon: "📜", title: "Recognized Certifications", text: "Earn certificates of excellence that are valued by universities, internships, and professional bodies across India." },
   { icon: "⚡", title: "Confidence Building", text: "We create safe spaces where every voice matters — building the courage to ask hard questions and lead with clarity." },
   { icon: "🗺️", title: "Geopolitical Literacy", text: "Our curriculum brings global issues into focus, giving students the context to understand the world shaping their futures." },
