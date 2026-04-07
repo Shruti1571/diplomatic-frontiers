@@ -1,28 +1,29 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import founderPhoto from "@/assets/founder-aditya.jpg";
 
-const founderNote = `Nine years ago, I walked into a room I didn't quite belong in — nervous, position paper in hand, heart racing. I didn't know it then, but that room would change everything.
+const founderNote = `Nine years ago, I walked into a room I didn't quite belong in, nervous, position paper in hand, heart racing. I didn't know it then, but that room would change everything.
 
-That was my first MUN. And somewhere between researching foreign policy at midnight and fumbling through my first speech, I fell in love — not just with debate, but with what these rooms do to people. I watched quiet students find their voice. I saw uncertain minds become decisive ones. I felt something shift, not just in a committee, but in the people inside it.
+That was my first MUN. And somewhere between researching foreign policy at midnight and fumbling through my first speech, I fell in love, not just with debate, but with what these rooms do to people. I watched quiet students find their voice. I saw uncertain minds become decisive ones. I felt something shift, not just in a committee, but in the people inside it.
 
-Seventy-five conferences later, I'm still chasing that feeling. Except now, I'm not just a delegate sitting in those rooms — I'm trying to build them.
+Seventy-five conferences later, I'm still chasing that feeling. Except now, I'm not just a delegate sitting in those rooms. I'm trying to build them.
 
-YANF — Youth As Nations' Front — wasn't born from a business plan. It was born from a question that had been quietly unsettling me for years: why does youth development still feel like it belongs only to a select few? Why are the stages that build confidence, leadership, and real-world thinking still out of reach for so many young people across this country?
+YANF, Youth As Nations' Front, wasn't born from a business plan. It was born from a question that had been quietly unsettling me for years: why does youth development still feel like it belongs only to a select few? Why are the stages that build confidence, leadership, and real-world thinking still out of reach for so many young people across this country?
 
-I've co-founded conferences. I've chaired committees across Uttarakhand, Himachal Pradesh, Jharkhand, Bihar, Delhi-NCR and beyond. I've mentored delegates and worked alongside teams at some of the country's most prominent youth platforms. And through all of it — across every committee room, every debate floor, every conversation backstage — one thing became undeniably clear:`;
+I've co-founded conferences. I've chaired committees across Uttarakhand, Himachal Pradesh, Jharkhand, Bihar, Delhi-NCR and beyond. I've mentored delegates and worked alongside teams at some of the country's most prominent youth platforms. And through all of it, across every committee room, every debate floor, every conversation backstage, one thing became undeniably clear:`;
 
 const founderNoteQuote = `"The problem was never the student. It was always the opportunity."`;
 
-const founderNoteRest = `YANF exists to close that gap. Not just through Model UN — though we do that with everything we've got — but through Debates, Youth Parliament simulations, and our Innovation Assembly. We want every student who walks into a YANF event to walk out different — not because we told them what to think, but because we gave them the space to discover how powerfully they already can.
+const founderNoteRest = `YANF exists to close that gap. Not just through Model UN, though we do that with everything we've got, but through Debates, Youth Parliament simulations, and our Innovation Assembly. We want every student who walks into a YANF event to walk out different, not because we told them what to think, but because we gave them the space to discover how powerfully they already can.
 
-I've built this alongside a full-time career in business and management — and honestly, that's intentional. I believe the line between the boardroom and the committee room is thinner than we think. The same skills that make a great negotiator make a great entrepreneur. The same instinct that wins a debate can shape a policy. YANF is where those worlds meet.
+I've built this alongside a full-time career in business and management, and honestly, that's intentional. I believe the line between the boardroom and the committee room is thinner than we think. The same skills that make a great negotiator make a great entrepreneur. The same instinct that wins a debate can shape a policy. YANF is where those worlds meet.
 
-We are just getting started. The cities will grow. The stages will expand. But what will never change is the reason we do this — that singular belief that the future isn't something young people inherit. It's something they build. And we're here to hand them the tools.
+We are just getting started. The cities will grow. The stages will expand. But what will never change is the reason we do this, that singular belief that the future isn't something young people inherit. It's something they build. And we're here to hand them the tools.
 
-If you're a student reading this — you belong here. If you're a parent, an educator, an institution — I invite you to believe in what we believe: that given the right room, the right challenge, and the right people around them, every young person is already a leader. They just need the chance to prove it.`;
+If you're a student reading this, you belong here. If you're a parent, an educator, an institution, I invite you to believe in what we believe: that given the right room, the right challenge, and the right people around them, every young person is already a leader. They just need the chance to prove it.`;
 
-const previewText = `"Nine years ago, I walked into a room I didn't quite belong in — nervous, position paper in hand, heart racing. I didn't know it then, but that room would change everything..."`;
+const previewText = `"Nine years ago, I walked into a room I didn't quite belong in, nervous, position paper in hand, heart racing. I didn't know it then, but that room would change everything..."`;
 
 const CommunitySection = ({ onJoinClick }: { onJoinClick: () => void }) => {
   const [expanded, setExpanded] = useState(false);
@@ -42,7 +43,7 @@ const CommunitySection = ({ onJoinClick }: { onJoinClick: () => void }) => {
         <h2 className="section-title text-center">Be a Part of a <span>Thriving Community</span></h2>
         <div className="gold-line mx-auto mb-6" />
         <p className="font-serif text-lg italic text-muted-foreground max-w-[600px] mx-auto">
-          Meet the faces behind the movement — students, chairs, mentors, and visionaries united by a shared purpose.
+          Meet the faces behind the movement, students, chairs, mentors, and visionaries united by a shared purpose.
         </p>
       </motion.div>
 
@@ -68,14 +69,17 @@ const CommunitySection = ({ onJoinClick }: { onJoinClick: () => void }) => {
         >
           {/* Top: Photo + Preview */}
           <div className="flex flex-col sm:flex-row gap-6 sm:gap-10">
-            {/* Photo placeholder */}
-            <div className="mx-auto sm:mx-0 shrink-0 w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] flex items-center justify-center"
+            {/* Photo */}
+            <div className="mx-auto sm:mx-0 shrink-0 w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] overflow-hidden"
               style={{
-                background: "linear-gradient(135deg, hsl(var(--navy-light)), hsl(var(--gold) / 0.15))",
                 border: "1px solid hsl(var(--border))",
               }}
             >
-              <span className="text-5xl">👤</span>
+              <img
+                src={founderPhoto}
+                alt="Aditya Kumar, Founder of YANF"
+                className="w-full h-full object-cover object-top"
+              />
             </div>
 
             {/* Text side */}
