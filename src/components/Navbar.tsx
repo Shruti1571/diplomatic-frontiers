@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import yanfLogo from "@/assets/yanf-logo.png";
 
@@ -100,6 +100,11 @@ const Navbar = ({ onJoinClick }: NavbarProps) => {
             Blog
           </Link>
         </li>
+        <li>
+          <Link to="/yanf-ai" className="flex items-center gap-1.5 px-4 py-2.5 font-body text-[0.78rem] font-semibold tracking-[0.12em] uppercase text-primary hover:opacity-80 transition-opacity">
+            <Sparkles size={14} /> YANF AI
+          </Link>
+        </li>
         <li
           className="relative"
           onMouseEnter={() => setMoreOpen(true)}
@@ -146,6 +151,9 @@ const Navbar = ({ onJoinClick }: NavbarProps) => {
                 <Link key={i.path} to={i.path} target="_blank" className="block pl-4 text-sm text-foreground/60 hover:text-primary font-body" onClick={() => setMobileOpen(false)}>{i.label}</Link>
               ))}
               <Link to="/blogs" target="_blank" className="block text-sm text-foreground/80 hover:text-primary font-body" onClick={() => setMobileOpen(false)}>Blog</Link>
+              <Link to="/yanf-ai" className="flex items-center gap-1.5 text-sm text-primary font-body font-semibold" onClick={() => setMobileOpen(false)}>
+                <Sparkles size={14} /> YANF AI
+              </Link>
               <div className="text-xs text-primary font-semibold uppercase tracking-wider mt-3 font-display">More</div>
               {moreItems.map(i => (
                 <Link key={i.path} to={i.path} target="_blank" className="block pl-4 text-sm text-foreground/60 hover:text-primary font-body" onClick={() => setMobileOpen(false)}>{i.label}</Link>
