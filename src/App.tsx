@@ -11,6 +11,10 @@ import InnovationAssemblyPage from "./pages/InnovationAssemblyPage.tsx";
 import DebatesPage from "./pages/DebatesPage.tsx";
 import YouthParliamentPage from "./pages/YouthParliamentPage.tsx";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.tsx";
+import AuthPage from "./pages/AuthPage.tsx";
+import YanfAIPage from "./pages/YanfAIPage.tsx";
+import { AuthProvider } from "./contexts/AuthContext";
+import AIFloatingButton from "./components/AIFloatingButton";
 
 const queryClient = new QueryClient();
 
@@ -23,19 +27,24 @@ const App = () => {
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/events/muns" element={<MUNPage />} />
-          <Route path="/events/debates" element={<DebatesPage />} />
-          <Route path="/events/youth-parliament" element={<YouthParliamentPage />} />
-          <Route path="/events/innovation-assembly" element={<InnovationAssemblyPage />} />
-          <Route path="/blogs" element={<UnderConstruction />} />
-          <Route path="/gallery" element={<UnderConstruction />} />
-          <Route path="/hall-of-fame" element={<UnderConstruction />} />
-          <Route path="/certifications" element={<UnderConstruction />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/events/muns" element={<MUNPage />} />
+            <Route path="/events/debates" element={<DebatesPage />} />
+            <Route path="/events/youth-parliament" element={<YouthParliamentPage />} />
+            <Route path="/events/innovation-assembly" element={<InnovationAssemblyPage />} />
+            <Route path="/blogs" element={<UnderConstruction />} />
+            <Route path="/gallery" element={<UnderConstruction />} />
+            <Route path="/hall-of-fame" element={<UnderConstruction />} />
+            <Route path="/certifications" element={<UnderConstruction />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/auth" element={<AuthPage />} />
+            <Route path="/yanf-ai" element={<YanfAIPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <AIFloatingButton />
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
